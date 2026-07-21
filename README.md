@@ -4,7 +4,7 @@ Herramienta de configuración automatizada de sistemas escrita en Bash, diseñad
 
 ![Imagen del script operando](assets/readme.png)
 
->[!important] ¡IMPORTANTE!
+>[!note] Nota
 Este es un proyecto personal el cual hago para tener una replica de mis configuraciones e instalaciones que tengo en mi maquina. A pesar de que el script es bastante flexible y modular, hay ciertos componentes en los que estás atado a mis decisiones; como puede ser la instalacion de paquetes, extensiones o algunas herramientas.
 
 >[!tip]
@@ -35,7 +35,7 @@ Podrás personalizar el script siguiendo la documentación: (pronto)
   sudo apt update && sudo apt install gum
   ```
 
->[!warning]
+>[!note] Nota
 Este script está probado en ubuntu. Aunque deberia de funcionar bien en otras distros GNU/Linux basadas en debian/ubuntu.
 
 ## Instalación
