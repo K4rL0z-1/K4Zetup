@@ -8,3 +8,5 @@ formulahendry.auto-rename-tag
 formulahendry.auto-close-tag
 formulahendry.auto-complete-tag
 xabikos.JavaScriptSnippets
+DavidAnson.vscode-markdownlint
+yzhang.markdown-all-in-one

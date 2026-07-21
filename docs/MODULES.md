@@ -7,9 +7,11 @@ K4zetup organiza las instalaciones en módulos categorizados. Cada módulo conti
 ## Módulo 01: Apps (`01-apps`)
 
 ### Propósito
+
 Instalación de aplicaciones base del sistema y software a través de Flatpak.
 
 ### Estructura
+
 ```
 01-apps/
 ├── scripts/
@@ -22,6 +24,7 @@ Instalación de aplicaciones base del sistema y software a través de Flatpak.
 ### Scripts
 
 #### `01-system-packages.sh`
+
 - **Función**: Instala paquetes del sistema usando apt
 - **Método**: `sudo apt install -y`
 - **Archivos dependientes**: `system-packages.txt`
@@ -34,6 +37,7 @@ Instalación de aplicaciones base del sistema y software a través de Flatpak.
   - `vlc` - Reproductor multimedia
 
 #### `02-flatpak-apps.sh`
+
 - **Función**: Instala aplicaciones Flatpak
 - **Método**: `flatpak install -y flathub`
 - **Pre-requisitos**: Instala Flatpak automáticamente si no existe
@@ -45,16 +49,19 @@ Instalación de aplicaciones base del sistema y software a través de Flatpak.
 ### Personalización
 
 **Agregar paquetes apt:**
+
 ```bash
 echo "nuevo-paquete" >> modules/01-apps/system-packages.txt
 ```
 
 **Agregar apps Flatpak:**
+
 ```bash
 echo "com.app.id" >> modules/01-apps/flatpak-apps.txt
 ```
 
 **Formato de archivos:**
+
 ```
 # Un paquete por línea
 paquete-1
@@ -69,9 +76,11 @@ paquete-2
 ## Módulo 02: Dev (`02-dev`)
 
 ### Propósito
+
 Herramientas de desarrollo: editor de código, extensiones y entornos de ejecución.
 
 ### Estructura
+
 ```
 02-dev/
 ├── scripts/
@@ -84,6 +93,7 @@ Herramientas de desarrollo: editor de código, extensiones y entornos de ejecuci
 ### Scripts
 
 #### `01-vscode-extensions.sh`
+
 - **Función**: Instala extensiones de VSCode
 - **Método**: `code --install-extension`
 - **Pre-requisitos**: VSCode debe estar instalado
@@ -99,8 +109,11 @@ Herramientas de desarrollo: editor de código, extensiones y entornos de ejecuci
   - `formulahendry.auto-close-tag` - Cierre automático de tags
   - `formulahendry.auto-complete-tag` - Autocompletado de tags
   - `xabikos.JavaScriptSnippets` - Snippets de JavaScript
+  - `DavidAnson.vscode-markdownlint` - Markdown linting and style checking
+  - `yzhang.markdown-all-in-one` - Markdown all in one kit
 
 #### `02-vscode.sh`
+
 - **Función**: Instala Visual Studio Code
 - **Método**: Descarga `.deb` directa de Microsoft
 - **Pre-requisitos**: `curl`
@@ -111,6 +124,7 @@ Herramientas de desarrollo: editor de código, extensiones y entornos de ejecuci
   3. Elimina archivo temporal
 
 #### `03-nodejs.sh`
+
 - **Función**: Instala Node.js mediante nvm
 - **Método**: nvm (Node Version Manager)
 - **Pre-requisitos**: `curl`
@@ -123,12 +137,14 @@ Herramientas de desarrollo: editor de código, extensiones y entornos de ejecuci
 ### Personalización
 
 **Agregar extensiones VSCode:**
+
 ```bash
 echo "autor.nombre-extension" >> modules/02-dev/vscode-extensions.txt
 ```
 
 **Cambiar versión de Node.js:**
 Editar el script `03-nodejs.sh` y cambiar la línea:
+
 ```bash
 nvm install 24  # Cambiar 24 por la versión deseada
 ```
@@ -138,9 +154,11 @@ nvm install 24  # Cambiar 24 por la versión deseada
 ## Módulo 03: AI (`03-ai`)
 
 ### Propósito
+
 Herramientas de inteligencia artificial y productividad asistida.
 
 ### Estructura
+
 ```
 03-ai/
 └── scripts/
@@ -150,6 +168,7 @@ Herramientas de inteligencia artificial y productividad asistida.
 ### Scripts
 
 #### `opencode.sh`
+
 - **Función**: Instala Opencode (herramienta CLI de IA)
 - **Método**: Script de instalación oficial
 - **Pre-requisitos**: `curl`
@@ -159,6 +178,7 @@ Herramientas de inteligencia artificial y productividad asistida.
 ### Personalización
 
 Para agregar nuevas herramientas de IA:
+
 1. Crear script en `modules/03-ai/scripts/`
 2. Seguir patrón existente
 3. El script aparecerá automáticamente
@@ -168,9 +188,11 @@ Para agregar nuevas herramientas de IA:
 ## Módulo 04: Gaming (`04-gaming`)
 
 ### Propósito
+
 Software relacionado con videojuegos y entretenimiento.
 
 ### Estructura
+
 ```
 04-gaming/
 └── scripts/
@@ -180,6 +202,7 @@ Software relacionado con videojuegos y entretenimiento.
 ### Scripts
 
 #### `01-steam.sh`
+
 - **Función**: Instala Steam (plataforma de juegos)
 - **Método**: Descarga `.deb` directa de Valve
 - **Pre-requisitos**: `curl`
@@ -192,6 +215,7 @@ Software relacionado con videojuegos y entretenimiento.
 ### Personalización
 
 Para agregar más software de gaming:
+
 1. Crear script en `modules/04-gaming/scripts/`
 2. Ejemplo: Lutris, Heroic Launcher, etc.
 
@@ -200,16 +224,20 @@ Para agregar más software de gaming:
 ## Módulo 05: Extra (`05-extra`)
 
 ### Propósito
+
 Módulo reservado para instalaciones adicionales personalizadas.
 
 ### Estructura Actual
+
 ```
 05-extra/
 └── (vacío - listo para uso)
 ```
 
 ### Uso Futuro
+
 Este módulo está diseñado para:
+
 - Herramientas específicas del usuario
 - Configuraciones personalizadas
 - Scripts de mantenimiento
@@ -269,12 +297,12 @@ execute_scripts "$NUEVO_MODULE" "${nuevoScripts[@]}"
 
 ## Convenciones de Nomenclatura
 
-| Elemento | Formato | Ejemplo |
-|----------|---------|---------|
-| Directorio módulo | `XX-descripcion` | `01-apps`, `02-dev` |
-| Script | `XX-descripcion.sh` | `01-system-packages.sh` |
-| Lista de paquetes | `nombre.txt` | `system-packages.txt` |
-| Función bash | `nombre_funcion()` | `clean_list()`, `execute_scripts()` |
+| Elemento          | Formato             | Ejemplo                             |
+| ----------------- | ------------------- | ----------------------------------- |
+| Directorio módulo | `XX-descripcion`    | `01-apps`, `02-dev`                 |
+| Script            | `XX-descripcion.sh` | `01-system-packages.sh`             |
+| Lista de paquetes | `nombre.txt`        | `system-packages.txt`               |
+| Función bash      | `nombre_funcion()`  | `clean_list()`, `execute_scripts()` |
 
 ---
 
@@ -305,11 +333,11 @@ set -euo pipefail
 
 if ! command -v app &> /dev/null; then
     tmpfile="/tmp/app.deb"
-    
+
     if ! command -v curl &> /dev/null; then
         sudo apt install -y -qq curl
     fi
-    
+
     curl -fsSL -o "$tmpfile" "https://url/descarga.deb"
     sudo apt install -y -qq "$tmpfile"
     rm -f "$tmpfile"
@@ -327,7 +355,7 @@ if ! command -v app &> /dev/null; then
     if ! command -v dependencia &> /dev/null; then
         sudo apt install -y -qq dependencia
     fi
-    
+
     # Instalar aplicación
     gum spin --spinner dot --title "Instalando..." -- \
     comando-de-instalacion
