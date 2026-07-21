@@ -1,0 +1,6 @@
+curl
+git
+fastfetch
+wget
+blueman
+vlc

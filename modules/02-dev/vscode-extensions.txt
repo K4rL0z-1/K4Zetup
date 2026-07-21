@@ -1,0 +1,10 @@
+vscodevim.vim
+teabyii.ayu
+ritwickdey.LiveServer
+esbenp.prettier-vscode
+PKief.material-icon-theme
+miguelsolorio.fluent-icons
+formulahendry.auto-rename-tag
+formulahendry.auto-close-tag
+formulahendry.auto-complete-tag
+xabikos.JavaScriptSnippets
