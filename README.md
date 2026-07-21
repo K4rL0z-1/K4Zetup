@@ -2,6 +2,14 @@
 
 Herramienta de configuración automatizada de sistemas escrita en Bash, diseñada para distribuciones basadas en Debian/Ubuntu. Permite instalar y configurar aplicaciones, herramientas de desarrollo, software de IA, juegos y otros paquetes de forma interactiva y modular.
 
+![Imagen del script operando](assets/readme.png)
+
+>[!important] ¡IMPORTANTE!
+Este es un proyecto personal el cual hago para tener una replica de mis configuraciones e instalaciones que tengo en mi maquina. A pesar de que el script es bastante flexible y modular, hay ciertos componentes en los que estás atado a mis decisiones; como puede ser la instalacion de paquetes, extensiones o algunas herramientas.
+
+>[!tip]
+Podrás personalizar el script siguiendo la documentación: (pronto)
+
 ## Características
 
 - **Interfaz interactiva** - Utiliza [Gum](https://github.com/charmbracelet/gum) para una experiencia visual amigable
@@ -12,13 +20,28 @@ Herramienta de configuración automatizada de sistemas escrita en Bash, diseñad
 
 ## Requisitos
 
-- Debian, Ubuntu o derivados
-- `bash` 4.0+, `gum`, `sudo`
+- Ubuntu
+- `curl`:
+
+  ```bash
+  sudo apt install curl
+  ```
+- `gum`:
+
+  ```bash
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+  echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+  sudo apt update && sudo apt install gum
+  ```
+
+>[!warning]
+Este script está probado en ubuntu. Aunque deberia de funcionar bien en otras distros GNU/Linux basadas en debian/ubuntu.
 
 ## Instalación
 
 ```bash
-git clone <url-del-repositorio> K4zetup
+git clone https://github.com/charmbracelet/gum.git
 cd K4zetup
 ./install.sh
 ```
@@ -30,13 +53,12 @@ K4zetup/
 ├── install.sh              # Punto de entrada
 ├── core/
 │   └── utils.sh            # Funciones utilitarias
-├── modules/
-│   ├── 01-apps/            # Paquetes del sistema y Flatpak
-│   ├── 02-dev/             # VSCode, extensiones, Node.js
-│   ├── 03-ai/              # Herramientas de IA
-│   ├── 04-gaming/          # Steam
-│   └── 05-extra/           # Módulos adicionales
-└── docs/                   # Documentación técnica
+└── modules/
+    ├── 01-apps/            # Paquetes del sistema y Flatpak
+    ├── 02-dev/             # VSCode, extensiones, Node.js
+    ├── 03-ai/              # Herramientas de IA
+    ├── 04-gaming/          # Steam
+    └── 05-extra/           # Módulos adicionales
 ```
 
 ## Módulos
@@ -54,14 +76,7 @@ Al ejecutar `./install.sh` se presenta una interfaz visual donde seleccionas los
 
 ## Documentación
 
-La documentación técnica detallada se encuentra en la carpeta [`docs/`](docs/):
-
-- [Índice de documentación](docs/INDEX.md)
-- [Arquitectura del proyecto](docs/ARCHITECTURE.md)
-- [Guía de instalación](docs/INSTALLATION.md)
-- [Documentación de módulos](docs/MODULES.md)
-- [Detalle de scripts](docs/SCRIPTS.md)
-- [Archivos de configuración](docs/CONFIGURATION.md)
+Pronto
 
 ## Autor
 
