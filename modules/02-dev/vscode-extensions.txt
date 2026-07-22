@@ -10,3 +10,6 @@ formulahendry.auto-complete-tag
 xabikos.JavaScriptSnippets
 DavidAnson.vscode-markdownlint
 yzhang.markdown-all-in-one
+dsznajder.es7-react-js-snippets
+dbaeumer.vscode-eslint
+eamodio.gitlens
